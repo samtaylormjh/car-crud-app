@@ -1,4 +1,5 @@
-export const ADD_CAR = "add_car";
+export const ADD_CAR = "ADD_CAR";
+export const UPDATE_CAR = "UPDATE_CAR";
 
 export const addCar = (car) => {
   return {
@@ -7,4 +8,9 @@ export const addCar = (car) => {
   };
 };
 
-export default addCar;
+export const updateCar = (car) => {
+  return {
+    type: UPDATE_CAR,
+    car: car,
+  };
+};

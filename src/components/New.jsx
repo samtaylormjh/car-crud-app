@@ -7,13 +7,17 @@ import { addCar } from "./actions";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    cars: state.cars,
+  };
 }
 
 function New(props) {
-  console.log(props);
   const submitHandler = (values) => {
-    console.log(values);
+    const ids = props.cars.map((c) => c.id);
+    values.id = Math.max(...ids) + 1;
+    props.addCar(values);
+    props.history.push("/");
   };
 
   return (
