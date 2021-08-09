@@ -1,4 +1,4 @@
-import { ADD_CAR, UPDATE_CAR } from "./actions";
+import { ADD_CAR, UPDATE_CAR, DELETE_CAR } from "./actions";
 
 const placeholderCars = [
   {
@@ -41,11 +41,14 @@ const carsReducer = (state = placeholderCars, action) => {
     }
     case UPDATE_CAR: {
       const { car: newCar } = action;
-      // console.log(newCar);
-      // console.log(state);
       let newState = [...state];
       const indexToUpdate = newState.findIndex((c) => c.id == newCar.id);
       newState[indexToUpdate] = newCar;
+      return newState;
+    }
+    case DELETE_CAR: {
+      console.log("action", action);
+      let newState = state.filter((c) => c.id !== action.car.id);
       return newState;
     }
     default:
